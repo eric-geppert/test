@@ -25,9 +25,9 @@ public class Game {
     public static Deck shuffle(Deck deck){
         //div in 2
         //alternate cards
-        System.out.println("before:" +deck.getDeckCards());
+//        System.out.println("before:" +deck.getDeckCards());
         Collections.shuffle(deck.getDeckCards());
-        System.out.println("after:" +deck.getDeckCards());
+//        System.out.println("after:" +deck.getDeckCards());
 
         return deck;
     }
@@ -83,23 +83,47 @@ public class Game {
 //        return players;
     }
 
+    public static void battle(ArrayList<Player> players){
+//        ArrayList<Card> cardsPlayed = new ArrayList<Card>();
+        Player currentlyWinning = new Player();
+        Card card = new Card();
+        card.setNumber(1);
+        for(int i=0;i<players.size();i++){
+            if(players.get(i).getCards().getDeckCards().get(i).getNumber()>card.getNumber()){
+                currentlyWinning.setName(players.get(i).getName());
+                Deck deck = new Deck();
+                ArrayList<Card> car = new ArrayList<Card>();
+                car.add(players.get(i).getCards().getDeckCards().get(0));
+                deck.setDeckCards(car);
+                card.setNumber(players.get(i).getCards().getDeckCards().get(i).getNumber());
+//                currentlyWinning.setCards(players.get(i).getCards().getDeckCards().get(0);
+
+            }
+//                //go to war
+            System.out.println("card: " +players.get(i).getCards().getDeckCards().get(i).getNumber());
+        }
+        System.out.println("currentlyWinning: " +currentlyWinning);
+
+
+    }
+
     public static void main(String Args[]){
 
         Game game = new Game();
         ArrayList<Player> playerList = new ArrayList<Player>();
         Player p1 = new Player();
         Player p2 = new Player();
+        p1.setName("name1");
+        p1.setName("name2");
 
         playerList.add(p1);
         playerList.add(p2);
-
-//        game.setPlayers(playerList);
-
-
         Deck deck = createDeck();
         shuffle(deck);
 
         deal(playerList,deck);
+
+        battle(playerList);
 
     }
 
