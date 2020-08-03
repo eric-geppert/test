@@ -3,14 +3,14 @@ package package1;
 import java.util.ArrayList;
 
 public class Player {
-    public ArrayList<Card> getCards() {
+    public Deck getCards() {
         return cards;
     }
 
-    public void setCards(ArrayList<Card> cards) {
+    public void setCards(Deck cards) {
         this.cards = cards;
     }
 
-    private ArrayList<Card> cards;
+    private Deck cards;
 
 }
